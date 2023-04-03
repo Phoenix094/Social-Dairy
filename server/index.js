@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv';
 
 import postRoutes from "./routes/posts.js";
+import userRoutes from "./routes/users.js";
 
 const app = express();
 dotenv.config();
@@ -32,3 +33,4 @@ app.listen(PORT, () => {
 mongoose.set("strictQuery", true);
 
 app.use("/posts", postRoutes);
+app.use("/users", userRoutes);
