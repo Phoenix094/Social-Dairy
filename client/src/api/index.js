@@ -1,9 +1,14 @@
 import axios from "axios";
 
-const url = "http://localhost:5000/posts";
+const API = axios.create({ baseURL: "http://localhost:5000" })
 
-export const fetchPosts = () => axios.get(url);
-export const cretePost = (newPost) => axios.post(url, newPost);
-export const updatePost = (id, post) => axios.patch(`${url}/${id}`, post);
-export const deletePost = (id) => axios.delete(`${url}/${id}`);
-export const updateLikeCount = (id) => axios.patch(`${url}/${id}/likeCount`);
+
+
+export const fetchPosts = () => API.get('/posts');
+export const cretePost = (newPost) => API.post('/posts', newPost);
+export const updatePost = (id, post) => API.patch(`/posts/${id}`, post);
+export const deletePost = (id) => API.delete(`/posts/${id}`);
+export const updateLikeCount = (id) => API.patch(`/posts/${id}/likeCount`);
+
+export const signIn = (formData) => API.post('/users/signin', formData);
+export const signUp = (formData) => API.post('/users/signup', formData);

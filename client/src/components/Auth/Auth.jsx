@@ -23,7 +23,7 @@ const initialState = { firstName: '', lastName: '', email: '', password: '', con
 const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
-    const [isSignUp, setIsSignUp] = useState(false);
+    const [isSignUp, setIsSignUp] = useState(true);
     const [formData, setFormData] = useState(initialState);
 
     const history = createBrowserHistory();
@@ -49,13 +49,7 @@ const Auth = () => {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     };
-    const googleSuccess = async (res) => {
-        console.log(res);
-    }
-    const googleFailure = (error) => {
-        console.log(error);
-        console.log("Google Login Error");
-    }
+
 
     return (
         <Container component="main" maxWidth="xs">
