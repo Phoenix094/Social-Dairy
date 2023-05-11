@@ -19,13 +19,16 @@ const PORT = process.env.PORT;
 mongoose.connect(process.env.CONNECTION_URL, (error) => {
 	if (error) {
 		console.log("Not connected to mongo");
+
 	} else {
 		console.log("Connected to MongoDB");
+
 	}
 });
 
 app.listen(PORT, () => {
 	console.log(`server is running on : ${PORT}`);
+
 });
 
 // mongoose.set("useFindAndModify", false);
