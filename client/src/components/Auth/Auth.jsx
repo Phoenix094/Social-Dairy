@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import useStyles from "./styles";
 import Input from "./Input";
 import Icon from "./icon";
-// import { signup, signin } from '../../actions/auth';
+import { signup, signin } from '../../actions/auth';
 
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' }
@@ -37,15 +37,15 @@ const Auth = () => {
     const handleShowPassword = () =>
         setShowPassword((prevShowPassword) => !prevShowPassword);
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     if (isSignUp) {
-    //         dispatch(signup(formData, history));
-    //     } else {
-    //         dispatch(signin(formData, history));
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (isSignUp) {
+            dispatch(signup(formData, history));
+        } else {
+            dispatch(signin(formData, history));
 
-    //     }
-    // };
+        }
+    };
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     };
@@ -59,7 +59,7 @@ const Auth = () => {
                 <Typography variant="h5">
                     {isSignUp ? "Sign Up" : "Sign In"}{" "}
                 </Typography>
-                <form className={classes.form} onSubmit={() => { }}>
+                <form className={classes.form} onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         {isSignUp && (
                             <>
