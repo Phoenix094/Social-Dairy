@@ -9,7 +9,7 @@ import memories from "../../images/memories.png";
 
 const Navbar = () => {
     const classes = useStyles();
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState(localStorage.getItem("profile"));
     const dispatch = useDispatch();
     const history = createBrowserHistory();
     const location = useLocation();
@@ -17,7 +17,7 @@ const Navbar = () => {
     const logout = () => {
         dispatch({ type: 'LOGOUT' })
         history.push('/');
-        // setUser(null);
+        setUser(null);
     }
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const Navbar = () => {
 
     }, [location])
 
-    // console.log(user.result);
+    console.log(user.result);
 
     return (
         <AppBar className={classes.appBar} position="static" color="inherit">
